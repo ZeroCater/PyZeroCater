@@ -4,12 +4,17 @@ import re
 
 
 class ZeroCaterClient(object):
-    def __init__(self, username, password):
+    def __init__(self, username=None, password=None, token=None):
         self._base_url = 'https://zerocater.com/api/v3'
         self._http_client = httplib2.Http()
 
         self.urls()
-        self._get_token(username, password)
+        if token:
+            self._token = token
+        elif username and password:
+            self._get_token(username, password)
+        else:
+            raise Exception('You must supply either a token, or username and password.')
         self.get_user()
         self.get_meals_url()
 
