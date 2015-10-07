@@ -1,0 +1,11 @@
+*.pyc
+.project
+.pydevproject
+dist
+venv*
+cloudinary/static
+*.egg
+.DS_Store
+build
+*.swp
+.cache
